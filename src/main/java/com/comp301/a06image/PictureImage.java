@@ -14,9 +14,9 @@ public class PictureImage implements Image {
   private BufferedImage picture;
 
   public PictureImage(String pathname) throws IOException {
-    BufferedImage image = null;
-
-    ImageInputStream is = ImageIO.createImageInputStream(new File(pathname));
+    BufferedImage image;
+    File pic = new File(pathname);
+    ImageInputStream is = ImageIO.createImageInputStream(pic);
     Iterator<ImageReader> iter = ImageIO.getImageReaders(is);
     ImageReader imageReader = (ImageReader) iter.next();
     imageReader.setInput(is);
@@ -26,6 +26,12 @@ public class PictureImage implements Image {
 
   @Override
   public Color getPixelColor(int x, int y) {
+    if (x < 0 || x > this.picture.getWidth()) {
+      throw new IllegalArgumentException();
+    }
+    if (y < 0 || y > this.picture.getHeight()) {
+      throw new IllegalArgumentException();
+    }
     int rgb = this.picture.getRGB(x, y);
     Color pixel = new Color(rgb);
     return pixel;

@@ -9,6 +9,8 @@ public class SolidColorImage implements Image {
   private Color _color;
 
   public SolidColorImage(int width, int height, Color color) {
+    if (width < 0 || height < 0) {throw new IllegalArgumentException();}
+    if (color == null) {throw new IllegalArgumentException();}
     this._width = width;
     this._height = height;
     this._color = color;
