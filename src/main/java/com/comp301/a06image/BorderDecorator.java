@@ -30,16 +30,18 @@ public class BorderDecorator implements Image {
     } else {
       return this._image.getPixelColor(x - _thickness, y - _thickness);
     }
-    }
+  }
 
   @Override
   public int getWidth() {
-    return this._image.getWidth() + (2 * _thickness);
+    int a = 2 * _thickness;
+    return this._image.getWidth() + a;
   }
 
   @Override
   public int getHeight() {
-    return this._image.getWidth() + (2 * _thickness);
+    int a = 2 * _thickness;
+    return this._image.getWidth() + a;
   }
 
   @Override

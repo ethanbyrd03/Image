@@ -10,6 +10,9 @@ public class ZoomDecorator implements Image {
     if (multiplier <= 0) {
       throw new IllegalArgumentException();
     }
+    if (image == null) {
+      throw new IllegalArgumentException();
+    }
     this._image = image;
     this._multiplier = multiplier;
   }
@@ -37,6 +40,6 @@ public class ZoomDecorator implements Image {
 
   @Override
   public int getNumLayers() {
-    return this._image.getNumLayers();
+    return this._image.getNumLayers() + 1;
   }
 }

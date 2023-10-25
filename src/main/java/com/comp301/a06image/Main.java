@@ -17,7 +17,7 @@ public class Main {
     Image imgYC = new CircleDecorator(imgB, 50, 50, 40, new Color(255, 255, 0));
     Image imgOS = new SquareDecorator(imgYC, 100, 100, 40, new Color(200, 80, 10));
     Image imgZ = new ZoomDecorator(imgOS);
-    return imgOS;
+    return img;
   }
 
   /**
