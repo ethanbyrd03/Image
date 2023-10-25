@@ -35,22 +35,24 @@ public class SquareDecorator implements Image {
 
   @Override
   public Color getPixelColor(int x, int y) {
-    if (x > this._squareX && x < (this._squareX + this._squareSize)) {
-      if (y > this._squareY && y < (this._squareY + this._squareSize)) {
-        return this._color;
-      }
+    if (x >= this._squareX
+        && x <= (this._squareX + this._squareSize)
+        && y >= this._squareY
+        && y <= (this._squareY + this._squareSize)) {
+      return this._color;
+    } else {
+      return this._image.getPixelColor(x, y);
     }
-    return this._image.getPixelColor(x, y);
   }
 
   @Override
   public int getWidth() {
-    return this._squareSize += this._squareX;
+    return this._image.getWidth();
   }
 
   @Override
   public int getHeight() {
-    return this._squareSize += this._squareY;
+    return this._image.getHeight();
   }
 
   @Override
