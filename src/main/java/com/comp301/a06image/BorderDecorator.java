@@ -22,9 +22,9 @@ public class BorderDecorator implements Image {
 
   @Override
   public Color getPixelColor(int x, int y) {
-    if (x > this._image.getWidth()
+    if (x >= this._image.getWidth()
         && x < this._image.getWidth() + this._thickness
-        && y > this._image.getHeight()
+        && y >= this._image.getHeight()
         && y < this._image.getHeight() + this._thickness) {
       return this._borderColor;
     } else {
@@ -34,12 +34,12 @@ public class BorderDecorator implements Image {
 
   @Override
   public int getWidth() {
-    return this._image.getWidth() + 2 * this._thickness;
+    return this._image.getWidth() + (2 * this._thickness);
   }
 
   @Override
   public int getHeight() {
-    return this._image.getWidth() + 2 * this._thickness;
+    return this._image.getWidth() + (2 * this._thickness);
   }
 
   @Override
