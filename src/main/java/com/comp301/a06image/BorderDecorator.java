@@ -9,9 +9,6 @@ public class BorderDecorator implements Image {
   private Color _borderColor;
 
   public BorderDecorator(Image image, int thiccness, Color borderColor) {
-    if (image == null) {
-      throw new IllegalArgumentException();
-    }
     if (thiccness < 0) {
       throw new IllegalArgumentException();
     }
@@ -34,12 +31,12 @@ public class BorderDecorator implements Image {
 
   @Override
   public int getWidth() {
-    return this._image.getWidth() + (2 * this._thickness);
+    return this._image.getWidth() + this._thickness;
   }
 
   @Override
   public int getHeight() {
-    return this._image.getWidth() + (2 * this._thickness);
+    return this._image.getWidth() + this._thickness;
   }
 
   @Override
