@@ -14,12 +14,12 @@ public class SquareDecorator implements Image {
     if (image == null) {
       throw new IllegalArgumentException();
     }
-    if (squareX < 0 || squareX >= image.getWidth()) {
+    /*if (squareX < 0 || squareX >= image.getWidth()) {
       throw new IllegalArgumentException();
     }
     if (squareY < 0 || squareY >= image.getHeight()) {
       throw new IllegalArgumentException();
-    }
+    }*/
     if (squareSize < 0) {
       throw new IllegalArgumentException();
     }
