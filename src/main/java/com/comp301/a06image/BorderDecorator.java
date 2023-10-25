@@ -4,9 +4,9 @@ import java.awt.*;
 
 public class BorderDecorator implements Image {
 
-  private Image _image;
-  private int _thickness;
-  private Color _borderColor;
+  private final Image _image;
+  private static int _thickness;
+  private final Color _borderColor;
 
   public BorderDecorator(Image image, int thiccness, Color borderColor) {
     if (thiccness < 0) {
@@ -16,39 +16,30 @@ public class BorderDecorator implements Image {
       throw new IllegalArgumentException();
     }
     this._image = image;
-    this._thickness = thiccness;
+    _thickness = thiccness;
     this._borderColor = borderColor;
   }
 
   @Override
   public Color getPixelColor(int x, int y) {
-    if (x >= this._image.getWidth() + this._thickness || x < 0 - this._thickness) {
-      throw new IllegalArgumentException();
-    }
-    if (y >= this._image.getHeight() + this._thickness || x < 0 - this._thickness) {
-      throw new IllegalArgumentException();
-    }
-    if (x >= this._image.getWidth()) {
-      return this._borderColor;
-    } else if (y >= this._image.getHeight()) {
-      return this._borderColor;
-    } else if (x < 0) {
-      return this._borderColor;
-    } else if (y < 0) {
+    if (x < _thickness
+        || x >= this._image.getWidth() + _thickness
+        || y < _thickness
+        || y >= this._image.getHeight() + _thickness) {
       return this._borderColor;
     } else {
-      return this._image.getPixelColor(x, y);
+      return this._image.getPixelColor(x - _thickness, y - _thickness);
     }
-  }
+    }
 
   @Override
   public int getWidth() {
-    return this._image.getWidth() + this._thickness + this._thickness;
+    return this._image.getWidth() + (2 * _thickness);
   }
 
   @Override
   public int getHeight() {
-    return this._image.getWidth() + this._thickness + this._thickness;
+    return this._image.getWidth() + (2 * _thickness);
   }
 
   @Override

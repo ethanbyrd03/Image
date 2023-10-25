@@ -11,8 +11,13 @@ public class Main {
    * different decorators.
    */
   public static Image makeImage() throws IOException {
-    // TODO use this method for testing your decorators
-    return null;
+    Image img = new PictureImage("img/kmp.jpg");
+    Image imgR = new BorderDecorator(img, 5, new Color(255, 0, 0));
+    Image imgB = new BorderDecorator(imgR, 50, new Color(0, 0, 255));
+    Image imgYC = new CircleDecorator(imgB, 50, 50, 40, new Color(255, 255, 0));
+    Image imgOS = new SquareDecorator(imgYC, 100, 100, 40, new Color(200, 80, 10));
+    Image imgZ = new ZoomDecorator(imgOS);
+    return imgOS;
   }
 
   /**
