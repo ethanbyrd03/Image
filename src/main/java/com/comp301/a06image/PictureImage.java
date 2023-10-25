@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Iterator;
 
 public class PictureImage implements Image {
@@ -15,8 +17,8 @@ public class PictureImage implements Image {
 
   public PictureImage(String pathname) throws IOException {
     BufferedImage image;
-    File pic = new File(pathname);
-    ImageInputStream is = ImageIO.createImageInputStream(pic);
+    Path picPath = Paths.get(pathname);
+    ImageInputStream is = ImageIO.createImageInputStream(picPath);
     Iterator<ImageReader> iter = ImageIO.getImageReaders(is);
     ImageReader imageReader = (ImageReader) iter.next();
     imageReader.setInput(is);
