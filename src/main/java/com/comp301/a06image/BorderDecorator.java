@@ -34,14 +34,12 @@ public class BorderDecorator implements Image {
 
   @Override
   public int getWidth() {
-    int a = 2 * _thickness;
-    return this._image.getWidth() + a;
+    return (_thickness + this._image.getWidth() + _thickness);
   }
 
   @Override
   public int getHeight() {
-    int a = 2 * _thickness;
-    return this._image.getWidth() + a;
+    return (_thickness + this._image.getHeight() + _thickness);
   }
 
   @Override
