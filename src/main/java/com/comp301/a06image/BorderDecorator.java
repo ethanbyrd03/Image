@@ -5,8 +5,9 @@ import java.awt.*;
 public class BorderDecorator implements Image {
 
   private final Image _image;
-  private static int _thickness;
+  private int _thickness;
   private final Color _borderColor;
+  private Image _border;
 
   public BorderDecorator(Image image, int thiccness, Color borderColor) {
     if (thiccness < 0) {
@@ -16,8 +17,11 @@ public class BorderDecorator implements Image {
       throw new IllegalArgumentException();
     }
     this._image = image;
-    _thickness = thiccness;
+    this._thickness = thiccness;
     this._borderColor = borderColor;
+    this._border =
+        new SolidColorImage(
+            (image.getWidth() + (2 * thiccness)), image.getHeight() + (2 * thiccness), borderColor);
   }
 
   @Override
