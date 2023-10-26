@@ -23,7 +23,7 @@ public class BorderDecorator implements Image {
 
   @Override
   public Color getPixelColor(int x, int y) {
-    if (x > this.getWidth() || y > this.getHeight()) {
+    if (x > this.getWidth() || y > this.getHeight() || x < 0 || y < 0) {
       throw new IllegalArgumentException();
     }
     if (x < _thickness
