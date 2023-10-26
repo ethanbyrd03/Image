@@ -19,14 +19,13 @@ public class BorderDecorator implements Image {
     this._image = image;
     this._thickness = thiccness;
     this._borderColor = borderColor;
-    this._border =
-        new SolidColorImage(
-            (image.getWidth() + (2 * thiccness)), image.getHeight() + (2 * thiccness), borderColor);
   }
 
   @Override
   public Color getPixelColor(int x, int y) {
-    if (x > this.getWidth() || y > this.getHeight()) {throw new IllegalArgumentException();}
+    if (x > this.getWidth() || y > this.getHeight()) {
+      throw new IllegalArgumentException();
+    }
     if (x < _thickness
         || x >= this._image.getWidth() + _thickness
         || y < _thickness
